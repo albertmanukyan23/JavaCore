@@ -41,11 +41,7 @@ public class ArrayUtil {
         int evenNumber = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
-                if (evenNumber != 0) {
-                    System.out.print(", " + array[i]);
-                } else {
-                    System.out.print(array[i]);
-                }
+                System.out.print(array[i] + " ");
                 evenNumber++;
             }
         }
@@ -57,12 +53,7 @@ public class ArrayUtil {
         int oddNumber = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 != 0) {
-                if (oddNumber != 0) {
-                    System.out.print(", " + array[i]);
-
-                } else {
-                    System.out.print(array[i]);
-                }
+                System.out.print(array[i] + " ");
                 oddNumber++;
 
             }
