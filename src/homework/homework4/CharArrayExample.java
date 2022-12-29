@@ -27,10 +27,8 @@ public class CharArrayExample {
 
         if (chars3[chars3.length - 1] == 'y' && chars3[chars3.length - 2] == 'l') {
             isEnded = true;
-            System.out.println(isEnded);
-        } else {
-            System.out.println(isEnded);
         }
+        System.out.println(isEnded);
 
         //պետք է տպել մասիվի այն սինվոլները որոնք պռաբել չեն
 
