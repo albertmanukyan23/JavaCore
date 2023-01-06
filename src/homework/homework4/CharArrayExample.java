@@ -5,7 +5,7 @@ public class CharArrayExample {
         System.out.println(" Homework 4 ");
 
         //Պետք է գրել լոգիկա, որը կհաշվի թե քանի հատ կա c-փոփոխականից մեր մասիվի մեջ, ու տպել այդ քանակը։
-        char[] chars = {'j', 'a', 'v', 'a', 'l', 'o', 'v', 'e' };
+        char[] chars = {'j', 'a', 'v', 'a', 'l', 'o', 'v', 'e'};
         char c = 'o';
         int oCount = 0;
         for (int i = 0; i < chars.length; i++) {
@@ -22,17 +22,12 @@ public class CharArrayExample {
 
         //պետք է տպենլ true եթե մեր մասիվը վերջանում է ly-ով, եթե ոչ՝ false
 
-        char[] chars3 = {'j', 'a', 'v', 'a', 'l', 'o', 'l', 'y' };
-        boolean isEnded = false;
-
-        if (chars3[chars3.length - 1] == 'y' && chars3[chars3.length - 2] == 'l') {
-            isEnded = true;
-        }
-        System.out.println(isEnded);
+        char[] chars3 = {'j', 'a', 'v', 'a', 'l', 'o', 'l', 'y'};
+        System.out.println(chars3[chars3.length - 1] == 'y' && chars3[chars3.length - 2] == 'l');
 
         //պետք է տպել մասիվի այն սինվոլները որոնք պռաբել չեն
 
-        char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' ' };
+        char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' '};
         for (int i = 0; i < text.length; i++) {
             if (text[i] != ' ') {
                 System.out.print(text[i] + " ");
