@@ -14,8 +14,8 @@ public class ArraySort {
             }
         }
         System.out.print("From min to max : ");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + " ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
 
         // դասավորել նվազման կարգով
@@ -29,10 +29,9 @@ public class ArraySort {
             }
         }
         System.out.print("\nFrom max to min : ");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + " ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
-
 
     }
 }
