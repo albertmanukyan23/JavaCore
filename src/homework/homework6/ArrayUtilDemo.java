@@ -16,5 +16,6 @@ public class ArrayUtilDemo {
         au.firsElement(array);
         au.sumOfElements(array);
         au.arithmeticAverage(array);
+
     }
 }
