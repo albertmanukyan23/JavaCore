@@ -89,5 +89,6 @@ public class ArrayUtil {
 
             System.out.println("The middle element: " + array[index]);
         }
+
     }
 }
