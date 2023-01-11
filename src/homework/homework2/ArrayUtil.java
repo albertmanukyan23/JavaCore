@@ -21,7 +21,6 @@ public class ArrayUtil {
         for (int i = 0; i < array.length; i++) {
             if (max < array[i]) {
                 max = array[i];
-
             }
         }
         System.out.println("Մասիվի մեծագույն արժեքը հավասար է " + max);
