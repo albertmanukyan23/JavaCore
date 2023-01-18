@@ -21,7 +21,13 @@ public class DynamicArrayDemo {
         System.out.println();
         da.deleteByIndex(14, 16);
         da.print();
-        da.deleteByIndex(5);
+        System.out.println();
+        da.add(45);
+        da.add(48);
+        da.deleteByIndex(2);
+        da.print();
+        da.getByIndex(-4);
+
 
     }
 }

@@ -35,6 +35,7 @@ public class DynamicArray {
         if (index >= 0 && index < size) {
             return array[index];
         }
+        System.err.println("\nWrong Index in getByIndex! ");
         return -1;
     }
 
@@ -52,7 +53,7 @@ public class DynamicArray {
     //ջնջել մասիվի էլեմենտը ինդեքսով
     public void deleteByIndex(int index) {
         if (index < 0 || index >= size) {
-            System.err.println("Wrong index! ");
+            System.err.println("\nWrong index! ");
             return;
         }
         int[] newArray = new int[--size];
@@ -77,7 +78,7 @@ public class DynamicArray {
             array = newArray;
             size = changedSize;
         } else {
-            System.err.println("Indexes are incorrect! ");
+            System.err.println("\nIndexes are incorrect! ");
         }
     }
 }
