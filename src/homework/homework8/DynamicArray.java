@@ -67,7 +67,7 @@ public class DynamicArray {
         array = newArray;
     }
 
-    // ջնջել միջակայքի հատվածով
+    // առանձնացնել հատված ըստ սահմանների
     public void split(int leftBoard, int rightBoard) {
         if (leftBoard < rightBoard) {
             int changedSize = rightBoard - leftBoard;
