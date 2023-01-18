@@ -68,7 +68,7 @@ public class DynamicArray {
     }
 
     // ջնջել միջակայքի հատվածով
-    public void deleteByIndex(int leftBoard, int rightBoard) {
+    public void split(int leftBoard, int rightBoard) {
         if (leftBoard < rightBoard) {
             int changedSize = rightBoard - leftBoard;
             int[] newArray = new int[changedSize];

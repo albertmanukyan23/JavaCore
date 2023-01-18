@@ -19,7 +19,7 @@ public class DynamicArrayDemo {
         da.print();
         // test the second  deleteByIndex function
         System.out.println();
-        da.deleteByIndex(14, 16);
+        da.split(14, 16);
         da.print();
         System.out.println();
         da.add(45);
