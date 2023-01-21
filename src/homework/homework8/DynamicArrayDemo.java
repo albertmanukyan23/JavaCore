@@ -41,5 +41,6 @@ public class DynamicArrayDemo {
         da.print();
         System.out.println(da.exists(5));
         System.out.println(da.getIndexByValue(48));
+        da.add(-8,25);
     }
 }
