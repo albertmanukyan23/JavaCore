@@ -97,7 +97,7 @@ public class DynamicArray {
             System.err.println("\nWrong index for add() function");
             return;
         }
-        if (index == size - 1) {
+        if (index == array.length - 1) {
             extend();
         }
         for (int i = size; i > index; i--) {
