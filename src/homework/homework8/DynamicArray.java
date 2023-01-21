@@ -10,7 +10,6 @@ public class DynamicArray {
     private int size = 0;
 
     //ստուգել եթե մասիվի մեջ տեղ չկա-> կանչել extend()
-    //և ավելացնենք
     public void add(int value) {
         if (size == array.length) {
             extend();
@@ -18,9 +17,6 @@ public class DynamicArray {
         array[size++] = value;
     }
 
-    //1․ ստեղծել հին մասիվից 10 էլեմենտ ավելի մեծ մասիվ
-    //2․ քցել հին մասիվի էլեմենտները նորի մեջ
-    //3․ հին մասիվի հղումը կապենք նոր մասիվի հղման հետ։
     private void extend() {
         int[] newArray = new int[array.length + 10];
         for (int i = 0; i < array.length; i++) {
@@ -48,12 +44,13 @@ public class DynamicArray {
         for (int i = 0; i < size; i++) {
             System.out.print(array[i] + " ");
         }
+        System.out.println();
     }
 
     //ջնջել մասիվի էլեմենտը ինդեքսով
     public void deleteByIndex(int index) {
         if (index < 0 || index >= size) {
-            System.err.println("\nWrong index! ");
+            System.err.println("\nWrong index for deleteByIndex() function ");
             return;
         }
         int[] newArray = new int[--size];
@@ -80,5 +77,53 @@ public class DynamicArray {
         } else {
             System.err.println("\nIndexes are incorrect! ");
         }
+    }
+
+    //տրված value-ն դնելու ենք տրված index-ով էլեմենտի տեղը։
+    ////Հին արժեքը կկորի
+    ////եթե նման ինդեքսով էլեմենտ չկա, գրում ենք որ չկա։
+    public void set(int index, int value) {
+        if (index < 0 || index >= size) {
+            System.err.println("\nWrong index for set() function");
+            return;
+        }
+        array[index] = value;
+    }
+
+    //ավելացնել տրված value-ն տրված ինդեքսում, իսկ էղած էլեմենտները մի հատ աջ տանել։
+    //Եթե չկա նման ինդեքս, տպել որ չկա
+    public void add(int index, int value) {
+        if (index < 0 || index >= size) {
+            System.err.println("\nWrong index for add() function");
+            return;
+        }
+        if (index == size - 1) {
+            extend();
+        }
+        for (int i = size; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        size++;
+    }
+
+    //Վերադարձնել true եթե տրված value-ն կա մեր մասիվի մեջ, եթե ոչ false
+    public boolean exists(int value) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //Վերադարձնել տրված value-ի ինդեքսը, եթե շատ կա տվյալ թվից, վերադարձնել առաջին ինդեքսը։
+    //եթե չկա, -1
+    public int getIndexByValue(int value) {
+        for (int i = 0; i < size; i++) {
+            if (array[i]==value){
+                return i;
+            }
+        }
+        return -1;
     }
 }
