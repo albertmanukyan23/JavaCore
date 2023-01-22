@@ -42,5 +42,9 @@ public class DynamicArrayDemo {
         System.out.println(da.exists(5));
         System.out.println(da.getIndexByValue(48));
         da.add(-8,25);
+        da.deleteByIndex(3);
+        da.print();
+        da.add(9,8);
+        da.print();
     }
 }

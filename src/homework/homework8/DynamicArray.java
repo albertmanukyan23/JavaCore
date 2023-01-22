@@ -53,15 +53,10 @@ public class DynamicArray {
             System.err.println("\nWrong index for deleteByIndex() function ");
             return;
         }
-        int[] newArray = new int[--size];
-        for (int i = 0; i < newArray.length; i++) {
-            if (i >= index) {
-                newArray[i] = array[i + 1];
-                continue;
-            }
-            newArray[i] = array[i];
+        for (int i = index; i < size; i++) {
+            array[i] = array[i + 1];
         }
-        array = newArray;
+        size--;
     }
 
     // առանձնացնել հատված ըստ սահմանների
@@ -109,18 +104,21 @@ public class DynamicArray {
 
     //Վերադարձնել true եթե տրված value-ն կա մեր մասիվի մեջ, եթե ոչ false
     public boolean exists(int value) {
+        boolean existValue = false;
         for (int i = 0; i < size; i++) {
             if (array[i] == value) {
-                return true;
+                existValue = true;
+                break;
             }
         }
-        return false;
+        return existValue;
     }
+
     //Վերադարձնել տրված value-ի ինդեքսը, եթե շատ կա տվյալ թվից, վերադարձնել առաջին ինդեքսը։
     //եթե չկա, -1
     public int getIndexByValue(int value) {
         for (int i = 0; i < size; i++) {
-            if (array[i]==value){
+            if (array[i] == value) {
                 return i;
             }
         }
