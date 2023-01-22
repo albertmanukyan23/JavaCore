@@ -3,7 +3,6 @@ package homework.homework8;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 public class DynamicArray {
-
     //սա մեր հիմնական մասիվն է, որտեղ պահելու ենք ավելացվող էլեմենտները
     private int[] array = new int[10];
     //սա մեր մասիվի մեջ ավելացված էլեմենտների քանակն է
@@ -61,17 +60,17 @@ public class DynamicArray {
 
     // առանձնացնել հատված ըստ սահմանների
     public void split(int leftBoard, int rightBoard) {
-        if (leftBoard < rightBoard) {
-            int changedSize = rightBoard - leftBoard;
-            int[] newArray = new int[changedSize];
-            for (int i = 0; i < newArray.length; i++) {
-                newArray[i] = array[i];
-            }
-            array = newArray;
-            size = changedSize;
-        } else {
+        if (leftBoard > rightBoard) {
             System.err.println("\nIndexes are incorrect! ");
+            return;
         }
+        int changedSize = rightBoard - leftBoard;
+        int[] newArray = new int[changedSize];
+        for (int i = 0; i < newArray.length; i++) {
+            newArray[i] = array[i];
+        }
+        array = newArray;
+        size = changedSize;
     }
 
     //տրված value-ն դնելու ենք տրված index-ով էլեմենտի տեղը։
