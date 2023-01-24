@@ -100,7 +100,6 @@ public class DynamicArray {
         array[index] = value;
         size++;
     }
-
     //Վերադարձնել true եթե տրված value-ն կա մեր մասիվի մեջ, եթե ոչ false
     public boolean exists(int value) {
         boolean existValue = false;
