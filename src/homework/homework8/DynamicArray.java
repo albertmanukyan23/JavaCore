@@ -58,21 +58,6 @@ public class DynamicArray {
         size--;
     }
 
-    // առանձնացնել հատված ըստ սահմանների
-    public void split(int leftBoard, int rightBoard) {
-        if (leftBoard > rightBoard) {
-            System.err.println("\nIndexes are incorrect! ");
-            return;
-        }
-        int changedSize = rightBoard - leftBoard;
-        int[] newArray = new int[changedSize];
-        for (int i = 0; i < newArray.length; i++) {
-            newArray[i] = array[i];
-        }
-        array = newArray;
-        size = changedSize;
-    }
-
     //տրված value-ն դնելու ենք տրված index-ով էլեմենտի տեղը։
     ////Հին արժեքը կկորի
     ////եթե նման ինդեքսով էլեմենտ չկա, գրում ենք որ չկա։

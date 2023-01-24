@@ -22,7 +22,7 @@ public class DynamicArrayDemo {
         System.out.println();
 
         System.out.println("Homework 9 test");
-        da.split(14, 16);
+
         da.print();
         System.out.println();
         da.add(45);
@@ -47,6 +47,8 @@ public class DynamicArrayDemo {
         da.add(9,8);
         da.print();
         da.add(10,8);
+        da.print();
+        da.deleteByIndex(2);
         da.print();
         da.deleteByIndex(2);
         da.print();
