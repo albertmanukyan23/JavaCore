@@ -52,8 +52,8 @@ public class DynamicArray {
             System.err.println("\nWrong index for deleteByIndex() function ");
             return;
         }
-        for (int i = index; i < size; i++) {
-            array[i] = array[i + 1];
+        for (int i = index + 1; i < size; i++) {
+            array[i - 1] = array[i];
         }
         size--;
     }
@@ -100,6 +100,7 @@ public class DynamicArray {
         array[index] = value;
         size++;
     }
+
     //Վերադարձնել true եթե տրված value-ն կա մեր մասիվի մեջ, եթե ոչ false
     public boolean exists(int value) {
         boolean existValue = false;

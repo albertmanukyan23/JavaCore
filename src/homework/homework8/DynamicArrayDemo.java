@@ -46,5 +46,9 @@ public class DynamicArrayDemo {
         da.print();
         da.add(9,8);
         da.print();
+        da.add(10,8);
+        da.print();
+        da.deleteByIndex(2);
+        da.print();
     }
 }
