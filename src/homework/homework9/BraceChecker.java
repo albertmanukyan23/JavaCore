@@ -49,6 +49,7 @@ public class BraceChecker {
                     break;
             }
         }
+        // բացված բայց չփակված փակագծերի համար
         if (symbolCase.pop() != '+') {
             System.err.println("You have unclosed brace at the end");
         }
