@@ -51,7 +51,7 @@ public class BraceChecker {
         }
         // բացված բայց չփակված փակագծերի համար
         if (symbolCase.pop() != '+') {
-            System.err.println("You have unclosed brace at the end");
+            System.err.println("The closing brace  at the end is missing");
         }
     }
 }
