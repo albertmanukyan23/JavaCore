@@ -15,7 +15,8 @@ public class LinkedList {
         Node newNode = new Node();
         newNode.value = value;
         if (root == null) {
-            root = tail = newNode;
+            root = newNode;
+            tail = newNode;
             tail.next = null;
             root.prev = null;
             checker = newNode;
@@ -43,4 +44,26 @@ public class LinkedList {
         print();
     }
 
+    public void delete(int value) {
+        if (root == null) {
+            System.out.println("empty list ");
+            return;
+        }
+        while (checker.value != value) {
+            if (checker.next == null) {
+                System.out.println("list does not contain such an element");
+                return;
+            }
+            checker = checker.next;
+        }
+        if (checker != tail) {
+            checker.next.prev = checker.prev;
+            checker.prev.next = checker.next;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+            checker.prev = null;
+        }
+        checker = root;
+    }
 }
