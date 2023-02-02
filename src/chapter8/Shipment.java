@@ -2,6 +2,7 @@ package chapter8;
 
 public class Shipment extends BoxWeight {
     double cost;
+
     public Shipment(int len, double m, double cost) {
         super(len, m);
         this.cost = cost;
@@ -11,7 +12,7 @@ public class Shipment extends BoxWeight {
         this.cost = cost;
     }
 
-    public Shipment(Shipment bw){
+    public Shipment(Shipment bw) {
         super(bw);
         this.cost = bw.cost;
     }

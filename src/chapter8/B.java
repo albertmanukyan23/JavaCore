@@ -6,7 +6,8 @@ public class B extends A {
     public void showK() {
         System.out.println("k = " + k);
     }
-    public void callMe(){
+
+    public void callMe() {
         System.out.println("class B callMe");
     }
 

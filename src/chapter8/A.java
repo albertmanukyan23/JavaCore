@@ -6,7 +6,8 @@ public class A {
     public void showIJ() {
         System.out.println("i = " + i + " j = " + j);
     }
-    public void callMe(){
+
+    public void callMe() {
         System.out.println("class A callMe");
     }
 }
