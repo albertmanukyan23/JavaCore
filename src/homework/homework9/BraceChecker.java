@@ -2,13 +2,14 @@ package homework.homework9;
 
 public class BraceChecker {
     private String text;
+    private final Stack symbolCase = new Stack();
+
 
     public BraceChecker(String text) {
         this.text = text;
     }
 
     public void check() {
-        Stack symbolCase = new Stack();
         // Stack դատարկ լինելու դեպքում pop()-ը վերադարձնում է '+';
         for (int i = 0; i < text.length(); i++) {
             switch (text.charAt(i)) {
