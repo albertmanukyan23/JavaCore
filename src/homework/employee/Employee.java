@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Employee {
     private String name;
     private String surname;
-    private String employeeID;
+    private String ID;
     private double salary;
     private String company;
     private String position;
@@ -16,7 +16,7 @@ public class Employee {
     public Employee(String name, String surname, String employeeID, double salary, String company, String position) {
         this.name = name;
         this.surname = surname;
-        this.employeeID = employeeID;
+        this.ID = employeeID;
         this.salary = salary;
         this.company = company;
         this.position = position;
@@ -31,7 +31,7 @@ public class Employee {
     }
 
     public String getEmployeeID() {
-        return employeeID;
+        return ID;
     }
 
     public double getSalary() {
@@ -59,7 +59,7 @@ public class Employee {
             System.out.println("Please set ID correctly");
             return;
         }
-        this.employeeID = employeeID;
+        this.ID = employeeID;
     }
 
     public void setSalary(double salary) {
@@ -79,7 +79,7 @@ public class Employee {
         return "Employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", employeeID='" + employeeID + '\'' +
+                ", employeeID='" + ID + '\'' +
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
@@ -96,7 +96,7 @@ public class Employee {
         if (Double.compare(employee.salary, salary) != 0) return false;
         if (!Objects.equals(name, employee.name)) return false;
         if (!Objects.equals(surname, employee.surname)) return false;
-        if (!Objects.equals(employeeID, employee.employeeID)) return false;
+        if (!Objects.equals(ID, employee.ID)) return false;
         if (!Objects.equals(company, employee.company)) return false;
         return Objects.equals(position, employee.position);
     }
@@ -107,7 +107,7 @@ public class Employee {
         long temp;
         result = name != null ? name.hashCode() : 0;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (employeeID != null ? employeeID.hashCode() : 0);
+        result = 31 * result + (ID != null ? ID.hashCode() : 0);
         temp = Double.doubleToLongBits(salary);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (company != null ? company.hashCode() : 0);

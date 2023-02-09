@@ -20,27 +20,23 @@ public class EmployeeStorage {
     }
 
     // id is unique for every employee
-    public void searchByID(String id) {
+    public Employee searchByID(String id) {
         for (int i = 0; i < size; i++) {
             if (array[i].getEmployeeID().toLowerCase().equals(id.toLowerCase())) {
-                System.out.println(array[i]);
-                return;
+                return array[i];
             }
         }
-        System.err.println("There is no employee with such id, Please try again");
+        return null;
     }
 
-    public void searchByCompanyName(String companyName) {
-        boolean nameIsExist = false;
+    public Employee[] searchByCompanyName(String companyName) {
+        Employee[] employees = new Employee[size];
         for (int i = 0; i < size; i++) {
             if (array[i].getCompany().toLowerCase().equals(companyName.toLowerCase())) {
-                nameIsExist = true;
-                System.out.println(array[i]);
+                employees[i] = array[i];
             }
         }
-        if (!nameIsExist) {
-            System.err.println("There is no company with such name in our storage, Please try again");
-        }
+        return employees;
     }
 
     public void print() {
@@ -51,14 +47,5 @@ public class EmployeeStorage {
         for (int i = 0; i < size; i++) {
             System.out.println(array[i] + " ");
         }
-    }
-    public boolean idIsUnique(String id){
-        boolean isUnique = true;
-        for (int i = 0; i < size; i++) {
-            if (array[i].getEmployeeID().toLowerCase().equals(id.toLowerCase())){
-                isUnique = false;
-            }
-        }
-        return  isUnique;
     }
 }
