@@ -37,17 +37,14 @@ public class EmployeeStorage {
         return employees;
     }
 
-    public void searchBySalaryRange(double tmp1, double tmp2) {
-        boolean salaryIsExist = false;
+    public Employee[] getBySalaryRange(double tmp1, double tmp2) {
+        Employee[] employees = new Employee[size];
         for (int i = 0; i < size; i++) {
             if (array[i].getSalary() > tmp1 && array[i].getSalary() < tmp2) {
-                salaryIsExist = true;
-                System.out.println(array[i] + " ");
+                employees[i] = array[i];
             }
         }
-        if (!salaryIsExist) {
-            System.out.println("There are not Employees in that salary range");
-        }
+        return employees;
     }
 
     public void printActiveEmployees() {

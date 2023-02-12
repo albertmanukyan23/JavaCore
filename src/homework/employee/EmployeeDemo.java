@@ -5,111 +5,6 @@ import java.util.Scanner;
 public class EmployeeDemo {
     private static final Scanner scanner = new Scanner(System.in);
     private static final EmployeeStorage es = new EmployeeStorage();
-
-    private static void addController() {
-        System.out.println("Please input Employee's name, surname, id, salary, company, position with commas");
-        System.out.println("For every employee ID must be unrepeatable ,start with the letter A and consist of 4 symbols");
-        String[] data = scanner.nextLine().split(",");
-        if (es.getByEmployeeId(data[2]) != null) {
-            System.err.println("ID already exists. Please enter a unique ID.");
-        } else if (!data[2].startsWith("A") || data[2].length() != 4) {
-            System.err.println("Please enter a valid ID");
-        } else {
-            Employee newEmployee = new Employee(data[0], data[1], data[2], Double.parseDouble(data[3]), data[4], data[5]);
-            es.add(newEmployee);
-            newEmployee.setActive(true);
-            System.out.println("registration succeeded");
-        }
-    }
-
-    private static void searchByIdController() {
-        System.out.println("Please Input Employee's ID");
-        String employeeId = scanner.nextLine();
-        Employee emp = es.getByEmployeeId(employeeId);
-        if (emp == null) {
-            System.err.println("There is not employee in such ID");
-            return;
-        }
-        System.out.println(emp);
-    }
-
-    private static void searchByCompanyNameController() {
-        System.out.println("For seeing information about the employees Please input company's name");
-        String companyName = scanner.nextLine();
-        Employee[] colleagues = es.getByCompanyName(companyName);
-        boolean employeeExist = false;
-        for (Employee colleague : colleagues) {
-            if (colleague != null) {
-                employeeExist = true;
-                System.out.println(colleague);
-            }
-        }
-        if (!employeeExist) {
-            System.err.println("There are no employees in this company");
-        }
-    }
-
-    private static void searchBySalaryRangeController() {
-        System.out.println("Please input salary range");
-        System.out.println("From");
-        double tmp1 = Double.parseDouble(scanner.nextLine());
-        System.out.println("To");
-        double tmp2 = Double.parseDouble(scanner.nextLine());
-        if (tmp1 > tmp2 || tmp1 < 0 || tmp2 < 0) {
-            System.err.println("Please ,input range correctly");
-            return;
-        }
-        es.searchBySalaryRange(tmp1, tmp2);
-    }
-
-    private static void changePosition() {
-        System.out.println("Please input ID");
-        String empID = scanner.nextLine();
-        Employee tmp = es.getByEmployeeId(empID);
-        if (tmp == null) {
-            System.err.println("There is not employee in such ID");
-            return;
-        }
-        System.out.println("Please input new position");
-        String position = scanner.nextLine();
-        tmp.setPosition(position);
-        System.out.println("Position is changed");
-
-    }
-
-    private static void inactivateEmployee() {
-        System.out.println("Please input ID");
-        String empID = scanner.nextLine();
-        Employee tmp = es.getByEmployeeId(empID);
-        if (tmp == null) {
-            System.err.println("There is not employee in such ID");
-            return;
-        }
-        if (tmp.getActive()) {
-            tmp.setActive(false);
-            System.out.println("The employee is no longer active");
-        } else {
-            System.out.println("The employee was soon inactive");
-        }
-    }
-
-    private static void activateEmployee() {
-        System.out.println("Please input ID");
-        String empID = scanner.nextLine();
-        Employee tmp = es.getByEmployeeId(empID);
-        if (tmp == null) {
-            System.err.println("There is not employee in such ID");
-            return;
-        }
-        if (!tmp.getActive()) {
-            tmp.setActive(true);
-            System.out.println("The employee is already activated");
-        } else {
-            System.out.println("The employee is soon active");
-        }
-    }
-
-
     public static void main(String[] args) {
         boolean isRunning = true;
 
@@ -130,19 +25,19 @@ public class EmployeeDemo {
                     isRunning = false;
                     break;
                 case "1":
-                    addController();
+                    add();
                     break;
                 case "2":
                     es.print();
                     break;
                 case "3":
-                    searchByIdController();
+                    searchById();
                     break;
                 case "4":
-                    searchByCompanyNameController();
+                    searchByCompanyName();
                     break;
                 case "5":
-                    searchBySalaryRangeController();
+                    searchBySalaryRange();
                     break;
                 case "6":
                     changePosition();
@@ -159,6 +54,116 @@ public class EmployeeDemo {
                 default:
                     System.err.println("Wrong command, Please try again");
             }
+        }
+    }
+    private static void add() {
+        System.out.println("Please input Employee's name, surname, id, salary, company, position with commas");
+        System.out.println("For every employee ID must be unrepeatable ,start with the letter A and consist of 4 symbols");
+        String[] data = scanner.nextLine().split(",");
+        if (es.getByEmployeeId(data[2]) != null) {
+            System.err.println("ID already exists. Please enter a unique ID.");
+        } else if (!data[2].startsWith("A") || data[2].length() != 4) {
+            System.err.println("Please enter a valid ID");
+        } else {
+            Employee newEmployee = new Employee(data[0], data[1], data[2], Double.parseDouble(data[3]), data[4], data[5]);
+            es.add(newEmployee);
+            newEmployee.setActive(true);
+            System.out.println("registration succeeded");
+        }
+    }
+
+    private static void searchById() {
+        System.out.println("Please Input Employee's ID");
+        String employeeId = scanner.nextLine();
+        Employee emp = es.getByEmployeeId(employeeId);
+        if (emp == null) {
+            System.err.println("There is not employee in such ID");
+            return;
+        }
+        System.out.println(emp);
+    }
+
+    private static void searchByCompanyName() {
+        System.out.println("For seeing information about the employees Please input company's name");
+        String companyName = scanner.nextLine();
+        Employee[] colleagues = es.getByCompanyName(companyName);
+        boolean employeeExist = false;
+        for (Employee colleague : colleagues) {
+            if (colleague != null) {
+                employeeExist = true;
+                System.out.println(colleague);
+            }
+        }
+        if (!employeeExist) {
+            System.err.println("There are no employees in this company");
+        }
+    }
+
+    private static void searchBySalaryRange() {
+        System.out.println("Please input salary range");
+        System.out.println("From");
+        double tmp1 = Double.parseDouble(scanner.nextLine());
+        System.out.println("To");
+        double tmp2 = Double.parseDouble(scanner.nextLine());
+        if (tmp1 > tmp2 || tmp1 < 0 || tmp2 < 0) {
+            System.err.println("Please ,input range correctly");
+            return;
+        }
+        Employee[] employees = es.getBySalaryRange(tmp1, tmp2);
+        boolean isExist = false;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                isExist =true;
+                System.out.println(employee);
+            }
+        }
+        if (!isExist) {
+            System.err.println("There are no employees in this range");
+        }
+    }
+
+    private static void changePosition() {
+        System.out.println("Please input ID");
+        String empID = scanner.nextLine();
+        Employee tmp = es.getByEmployeeId(empID);
+        if (tmp == null) {
+            System.err.println("There is not employee in such ID");
+            return;
+        }
+        System.out.println("Please input new position");
+        String position = scanner.nextLine();
+        tmp.setPosition(position);
+        System.out.println("Position is changed");
+
+    }
+    private static void inactivateEmployee() {
+        System.out.println("Please input ID");
+        String empID = scanner.nextLine();
+        Employee tmp = es.getByEmployeeId(empID);
+        if (tmp == null) {
+            System.err.println("There is not employee in such ID");
+            return;
+        }
+        if (tmp.getActive()) {
+            tmp.setActive(false);
+            System.out.println("The employee is no longer active");
+        } else {
+            System.out.println("The employee was soon inactive");
+        }
+    }
+    private static void activateEmployee() {
+        System.out.println("Please input ID");
+        String empID = scanner.nextLine();
+        Employee tmp = es.getByEmployeeId(empID);
+        if (tmp == null) {
+            System.err.println("There is not employee in such ID");
+            return;
+        }
+        if (!tmp.getActive()) {
+            tmp.setActive(true);
+            System.out.println("The employee is already activated");
+        } else {
+            System.out.println("The employee is soon active");
         }
     }
 }
