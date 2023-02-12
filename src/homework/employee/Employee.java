@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Employee {
     private String name;
     private String surname;
-    private String Id;
+    private String id;
     private double salary;
     private String company;
     private String position;
@@ -17,7 +17,7 @@ public class Employee {
     public Employee(String name, String surname, String employeeID, double salary, String company, String position) {
         this.name = name;
         this.surname = surname;
-        this.Id = employeeID;
+        this.id = employeeID;
         this.salary = salary;
         this.company = company;
         this.position = position;
@@ -35,8 +35,8 @@ public class Employee {
         return surname;
     }
 
-    public String getID() {
-        return Id;
+    public String getId() {
+        return id;
     }
 
     public double getSalary() {
@@ -59,8 +59,8 @@ public class Employee {
         this.surname = surname;
     }
 
-    public void setID(String employeeID) {
-        this.Id = employeeID;
+    public void setId(String employeeID) {
+        this.id = employeeID;
     }
 
     public void setSalary(double salary) {
@@ -84,7 +84,7 @@ public class Employee {
         return "Employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", employeeID='" + Id + '\'' +
+                ", employeeID='" + id + '\'' +
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
@@ -102,7 +102,7 @@ public class Employee {
         if (Double.compare(employee.salary, salary) != 0) return false;
         if (!Objects.equals(name, employee.name)) return false;
         if (!Objects.equals(surname, employee.surname)) return false;
-        if (!Objects.equals(Id, employee.Id)) return false;
+        if (!Objects.equals(id, employee.id)) return false;
         if (!Objects.equals(company, employee.company)) return false;
         if (!Objects.equals(isActive, employee.isActive)) return false;
         return Objects.equals(position, employee.position);
@@ -110,6 +110,6 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, Id, salary, company, position, isActive);
+        return Objects.hash(name, surname, id, salary, company, position, isActive);
     }
 }

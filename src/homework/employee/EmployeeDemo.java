@@ -10,7 +10,7 @@ public class EmployeeDemo {
         System.out.println("Please input Employee's name, surname, id, salary, company, position with commas");
         System.out.println("For every employee ID must be unrepeatable ,start with the letter A and consist of 4 symbols");
         String[] data = scanner.nextLine().split(",");
-        if (es.getByEmployeeID(data[2]) != null) {
+        if (es.getByEmployeeId(data[2]) != null) {
             System.err.println("ID already exists. Please enter a unique ID.");
         } else if (!data[2].startsWith("A") || data[2].length() != 4) {
             System.err.println("Please enter a valid ID");
@@ -25,7 +25,7 @@ public class EmployeeDemo {
     private static void searchByIdController() {
         System.out.println("Please Input Employee's ID");
         String employeeId = scanner.nextLine();
-        Employee emp = es.getByEmployeeID(employeeId);
+        Employee emp = es.getByEmployeeId(employeeId);
         if (emp == null) {
             System.err.println("There is not employee in such ID");
             return;
@@ -65,7 +65,7 @@ public class EmployeeDemo {
     private static void changePosition() {
         System.out.println("Please input ID");
         String empID = scanner.nextLine();
-        Employee tmp = es.getByEmployeeID(empID);
+        Employee tmp = es.getByEmployeeId(empID);
         if (tmp == null) {
             System.err.println("There is not employee in such ID");
             return;
@@ -80,7 +80,7 @@ public class EmployeeDemo {
     private static void inactivateEmployee() {
         System.out.println("Please input ID");
         String empID = scanner.nextLine();
-        Employee tmp = es.getByEmployeeID(empID);
+        Employee tmp = es.getByEmployeeId(empID);
         if (tmp == null) {
             System.err.println("There is not employee in such ID");
             return;
@@ -96,7 +96,7 @@ public class EmployeeDemo {
     private static void activateEmployee() {
         System.out.println("Please input ID");
         String empID = scanner.nextLine();
-        Employee tmp = es.getByEmployeeID(empID);
+        Employee tmp = es.getByEmployeeId(empID);
         if (tmp == null) {
             System.err.println("There is not employee in such ID");
             return;

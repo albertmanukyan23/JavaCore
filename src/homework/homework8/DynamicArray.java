@@ -1,7 +1,5 @@
 package homework.homework8;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-
 public class DynamicArray {
     //սա մեր հիմնական մասիվն է, որտեղ պահելու ենք ավելացվող էլեմենտները
     private int[] array = new int[10];

@@ -18,9 +18,9 @@ public class EmployeeStorage {
         array = newArray;
     }
 
-    public Employee getByEmployeeID(String id) {
+    public Employee getByEmployeeId(String id) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getID().equals(id)) {
+            if (array[i].getId().equals(id)) {
                 return array[i];
             }
         }
