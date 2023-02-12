@@ -5,10 +5,11 @@ import java.util.Objects;
 public class Employee {
     private String name;
     private String surname;
-    private String ID;
+    private String Id;
     private double salary;
     private String company;
     private String position;
+    private boolean isActive;
 
     public Employee() {
     }
@@ -16,10 +17,14 @@ public class Employee {
     public Employee(String name, String surname, String employeeID, double salary, String company, String position) {
         this.name = name;
         this.surname = surname;
-        this.ID = employeeID;
+        this.Id = employeeID;
         this.salary = salary;
         this.company = company;
         this.position = position;
+    }
+
+    public boolean getActive() {
+        return isActive;
     }
 
     public String getName() {
@@ -30,8 +35,8 @@ public class Employee {
         return surname;
     }
 
-    public String getEmployeeID() {
-        return ID;
+    public String getID() {
+        return Id;
     }
 
     public double getSalary() {
@@ -54,12 +59,8 @@ public class Employee {
         this.surname = surname;
     }
 
-    public void setEmployeeID(String employeeID) {
-        if (!employeeID.startsWith("A") || employeeID.length() != 4) {
-            System.out.println("Please set ID correctly");
-            return;
-        }
-        this.ID = employeeID;
+    public void setID(String employeeID) {
+        this.Id = employeeID;
     }
 
     public void setSalary(double salary) {
@@ -74,15 +75,20 @@ public class Employee {
         this.position = position;
     }
 
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", employeeID='" + ID + '\'' +
+                ", employeeID='" + Id + '\'' +
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
+                ", isActive='" + isActive + '\'' +
                 '}';
     }
 
@@ -96,22 +102,14 @@ public class Employee {
         if (Double.compare(employee.salary, salary) != 0) return false;
         if (!Objects.equals(name, employee.name)) return false;
         if (!Objects.equals(surname, employee.surname)) return false;
-        if (!Objects.equals(ID, employee.ID)) return false;
+        if (!Objects.equals(Id, employee.Id)) return false;
         if (!Objects.equals(company, employee.company)) return false;
+        if (!Objects.equals(isActive, employee.isActive)) return false;
         return Objects.equals(position, employee.position);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (ID != null ? ID.hashCode() : 0);
-        temp = Double.doubleToLongBits(salary);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (company != null ? company.hashCode() : 0);
-        result = 31 * result + (position != null ? position.hashCode() : 0);
-        return result;
+        return Objects.hash(name, surname, Id, salary, company, position, isActive);
     }
 }

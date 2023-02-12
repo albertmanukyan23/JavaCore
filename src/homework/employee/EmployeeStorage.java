@@ -1,5 +1,6 @@
 package homework.employee;
 
+
 public class EmployeeStorage {
     private Employee[] array = new Employee[10];
     private int size = 0;
@@ -13,23 +14,20 @@ public class EmployeeStorage {
 
     private void extend() {
         Employee[] newArray = new Employee[array.length + 10];
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
-        }
+        System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
     }
 
-    // id is unique for every employee
-    public Employee searchByID(String id) {
+    public Employee getByEmployeeID(String id) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getEmployeeID().toLowerCase().equals(id.toLowerCase())) {
+            if (array[i].getID().equals(id)) {
                 return array[i];
             }
         }
         return null;
     }
 
-    public Employee[] searchByCompanyName(String companyName) {
+    public Employee[] getByCompanyName(String companyName) {
         Employee[] employees = new Employee[size];
         for (int i = 0; i < size; i++) {
             if (array[i].getCompany().toLowerCase().equals(companyName.toLowerCase())) {
@@ -37,6 +35,32 @@ public class EmployeeStorage {
             }
         }
         return employees;
+    }
+
+    public void searchBySalaryRange(double tmp1, double tmp2) {
+        boolean salaryIsExist = false;
+        for (int i = 0; i < size; i++) {
+            if (array[i].getSalary() > tmp1 && array[i].getSalary() < tmp2) {
+                salaryIsExist = true;
+                System.out.println(array[i] + " ");
+            }
+        }
+        if (!salaryIsExist) {
+            System.out.println("There are not Employees in that salary range");
+        }
+    }
+
+    public void printActiveEmployees() {
+        boolean areActiveEmployees = false;
+        for (int i = 0; i < size; i++) {
+            if (array[i].getActive()) {
+                areActiveEmployees = true;
+                System.out.println(array[i] + " ");
+            }
+        }
+        if (!areActiveEmployees) {
+            System.err.println("There are not Active Employees");
+        }
     }
 
     public void print() {
