@@ -37,26 +37,25 @@ public class EmployeeStorage {
         return employees;
     }
 
-    public Employee[] getBySalaryRange(double tmp1, double tmp2) {
+    public Employee[] getBySalaryRange(double min, double max) {
         Employee[] employees = new Employee[size];
         for (int i = 0; i < size; i++) {
-            if (array[i].getSalary() > tmp1 && array[i].getSalary() < tmp2) {
+            if (array[i].getSalary() >= min && array[i].getSalary() <= max) {
                 employees[i] = array[i];
             }
         }
         return employees;
     }
 
-    public void printActiveEmployees() {
-        boolean areActiveEmployees = false;
+    public void printByStatus(boolean active) {
+        if (size == 0) {
+            System.err.println("The storage is empty");
+            return;
+        }
         for (int i = 0; i < size; i++) {
-            if (array[i].getActive()) {
-                areActiveEmployees = true;
+            if (array[i].isActive() == active) {
                 System.out.println(array[i] + " ");
             }
-        }
-        if (!areActiveEmployees) {
-            System.err.println("There are not Active Employees");
         }
     }
 

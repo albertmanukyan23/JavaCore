@@ -1,31 +1,35 @@
 package homework.employee;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
+    private static final SimpleDateFormat USER_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy"); //Եթե անհրաԺեշտ է ֆորմատեվ տպել
     private String name;
     private String surname;
     private String id;
+    private Date registerDate;
+    private Date dateOfBirthday;
     private double salary;
     private String company;
     private String position;
-    private boolean isActive;
+    private boolean isActive = true;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String employeeID, double salary, String company, String position) {
+    public Employee(String name, String surname, String employeeID, Date dateOfBirthday, double salary, String company, String position) throws ParseException {
         this.name = name;
         this.surname = surname;
         this.id = employeeID;
+        this.dateOfBirthday = dateOfBirthday;
         this.salary = salary;
         this.company = company;
         this.position = position;
     }
 
-    public boolean getActive() {
-        return isActive;
-    }
 
     public String getName() {
         return name;
@@ -37,6 +41,10 @@ public class Employee {
 
     public String getId() {
         return id;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
     }
 
     public double getSalary() {
@@ -51,6 +59,11 @@ public class Employee {
         return position;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -61,6 +74,10 @@ public class Employee {
 
     public void setId(String employeeID) {
         this.id = employeeID;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
     }
 
     public void setSalary(double salary) {
@@ -75,8 +92,21 @@ public class Employee {
         this.position = position;
     }
 
-    public void setActive(boolean active) {
+    public void changeActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Double.compare(employee.salary, salary) == 0 && isActive == employee.isActive && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(id, employee.id) && Objects.equals(registerDate, employee.registerDate) && Objects.equals(dateOfBirthday, employee.dateOfBirthday) && Objects.equals(company, employee.company) && Objects.equals(position, employee.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, id, registerDate, dateOfBirthday, salary, company, position, isActive);
     }
 
     @Override
@@ -84,32 +114,13 @@ public class Employee {
         return "Employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", employeeID='" + id + '\'' +
+                ", id='" + id + '\'' +
+                ", registerDate=" + USER_DATE_FORMAT.format(registerDate) +
+                ", dateOfBirthday=" + USER_DATE_FORMAT.format(dateOfBirthday) +
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
-                ", isActive='" + isActive + '\'' +
+                ", isActive=" + isActive +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        if (Double.compare(employee.salary, salary) != 0) return false;
-        if (!Objects.equals(name, employee.name)) return false;
-        if (!Objects.equals(surname, employee.surname)) return false;
-        if (!Objects.equals(id, employee.id)) return false;
-        if (!Objects.equals(company, employee.company)) return false;
-        if (!Objects.equals(isActive, employee.isActive)) return false;
-        return Objects.equals(position, employee.position);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, id, salary, company, position, isActive);
     }
 }
