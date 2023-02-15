@@ -11,9 +11,6 @@ public class EmployeeDemo {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public static void main(String[] args) throws ParseException {
-//      es.add(new Employee("ALBERT", "MANUKYAN", "A004", 12/02/2023, 100, "epam", "junior"));
-//        es.add(new Employee("ALB", "MANUKYAN", "A001", dateOfBirthday, 500, "epam", "junior"));
-//        es.add(new Employee("BERT", "UKYAN", "A008", dateOfBirthday, 10, "epa", "juior"));
         boolean isRunning = true;
 
         while (isRunning) {
