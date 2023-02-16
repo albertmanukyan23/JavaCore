@@ -177,6 +177,8 @@ public class EmployeeDemo {
         }
         if (!tmp.isActive()) {
             tmp.changeActive(true);
+            Date date = new Date();
+            tmp.setRegisterDate(date);
             System.out.println("The employee is already activated");
         } else {
             System.out.println("The employee is soon active");
