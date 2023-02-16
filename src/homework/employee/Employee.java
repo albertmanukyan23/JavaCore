@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
-    private static final SimpleDateFormat USER_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy"); //Եթե անհրաԺեշտ է ֆորմատեվ տպել
     private String name;
     private String surname;
     private String id;
@@ -29,7 +28,6 @@ public class Employee {
         this.company = company;
         this.position = position;
     }
-
 
     public String getName() {
         return name;
@@ -115,8 +113,8 @@ public class Employee {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", id='" + id + '\'' +
-                ", registerDate=" + USER_DATE_FORMAT.format(registerDate) +
-                ", dateOfBirthday=" + USER_DATE_FORMAT.format(dateOfBirthday) +
+                ", registerDate=" + EmployeeDemo.sdf.format(registerDate) +
+                ", dateOfBirthday=" + EmployeeDemo.sdf.format(dateOfBirthday) +
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +

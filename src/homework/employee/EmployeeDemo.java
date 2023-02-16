@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class EmployeeDemo {
+    public static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private static final Scanner scanner = new Scanner(System.in);
     private static final EmployeeStorage es = new EmployeeStorage();
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public static void main(String[] args) throws ParseException {
         boolean isRunning = true;
