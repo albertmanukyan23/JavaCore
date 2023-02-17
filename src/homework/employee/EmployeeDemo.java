@@ -75,9 +75,8 @@ public class EmployeeDemo {
         } else if (!data[2].startsWith("A") || data[2].length() != 4) {
             System.err.println("Please enter a valid ID");
         } else {
-            Employee newEmployee = new Employee(data[0], data[1], data[2], sdf.parse(data[3]), Double.parseDouble(data[4]), data[5], data[6]);
             Date date = new Date();
-            newEmployee.setRegisterDate(date);
+            Employee newEmployee = new Employee(data[0], data[1], data[2], sdf.parse(data[3]), Double.parseDouble(data[4]), data[5], data[6],date);
             es.add(newEmployee);
             System.out.println("registration succeeded");
         }

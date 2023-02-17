@@ -19,7 +19,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, String surname, String employeeID, Date dateOfBirthday, double salary, String company, String position) throws ParseException {
+    public Employee(String name, String surname, String employeeID, Date dateOfBirthday, double salary, String company, String position ,Date registerDate )  {
         this.name = name;
         this.surname = surname;
         this.id = employeeID;
@@ -27,6 +27,7 @@ public class Employee {
         this.salary = salary;
         this.company = company;
         this.position = position;
+        this.registerDate = registerDate;
     }
 
     public String getName() {
