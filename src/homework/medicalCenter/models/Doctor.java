@@ -9,8 +9,6 @@ public class Doctor extends Person {
     public Doctor() {
     }
 
-    ;
-
     public Doctor(String name, String surname, String id, String phoneNumber, String profession, String email) {
         super(name, surname, id, phoneNumber);
         this.profession = profession;
