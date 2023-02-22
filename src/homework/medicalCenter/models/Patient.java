@@ -40,8 +40,7 @@ public class Patient extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(registerDateTime, patient.registerDateTime) && Objects.equals(doctor, patient.doctor) &&
-                Objects.equals(name, patient.name) && Objects.equals(surname, patient.surname) && Objects.equals(id, patient.id) && Objects.equals(phoneNumber, patient.phoneNumber);
+        return Objects.equals(registerDateTime, patient.registerDateTime) && Objects.equals(doctor, patient.doctor);
     }
 
     @Override

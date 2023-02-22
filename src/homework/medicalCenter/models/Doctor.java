@@ -37,9 +37,7 @@ public class Doctor extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Doctor doctor = (Doctor) o;
-        return Objects.equals(profession, doctor.profession) && Objects.equals(email, doctor.email) &&
-                Objects.equals(name, doctor.name) && Objects.equals(surname, doctor.surname) && Objects.equals(id, doctor.id) && Objects.equals(phoneNumber, doctor.phoneNumber);
-
+        return Objects.equals(profession, doctor.profession) && Objects.equals(email, doctor.email);
     }
 
     @Override
