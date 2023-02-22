@@ -1,5 +1,7 @@
-package homework.employee;
+package homework.employee.storage;
 
+import homework.employee.model.Company;
+import homework.employee.model.Employee;
 
 public class EmployeeStorage {
     private Employee[] array = new Employee[10];
@@ -27,14 +29,12 @@ public class EmployeeStorage {
         return null;
     }
 
-    public Employee[] getByCompanyName(String companyName) {
-        Employee[] employees = new Employee[size];
+    public void getEmployeeByCompany(Company company) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getCompany().toLowerCase().equals(companyName.toLowerCase())) {
-                employees[i] = array[i];
+            if (array[i].getCompany().equals(company)) {
+                System.out.println(array[i]);
             }
         }
-        return employees;
     }
 
     public Employee[] getBySalaryRange(double min, double max) {
