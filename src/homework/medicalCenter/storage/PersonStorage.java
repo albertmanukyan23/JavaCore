@@ -111,12 +111,9 @@ public class PersonStorage {
     public void printByDoctorName(String name) {
         boolean isExist = false;
         for (int i = 0; i < size; i++) {
-            if (people[i] instanceof Patient) {
-                Patient patient = (Patient) people[i];
-                if (patient.getDoctor().getName().equals(name)) {
-                    isExist = true;
-                    System.out.println(people[i]);
-                }
+            if (people[i] instanceof Patient && ((Patient) people[i]).getDoctor().getName().equals(name)) {
+                isExist = true;
+                System.out.println(people[i]);
             }
         }
         if (!isExist) {
