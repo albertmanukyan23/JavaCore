@@ -117,7 +117,7 @@ public class PersonStorage {
             }
         }
         if (!isExist) {
-            System.err.println("Patients was not found");
+            System.err.println("Patients were not found");
         }
     }
 
