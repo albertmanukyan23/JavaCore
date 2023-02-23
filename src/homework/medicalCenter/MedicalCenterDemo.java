@@ -8,7 +8,6 @@ import homework.medicalCenter.util.CalendarUtil;
 import homework.medicalCenter.util.DoctorUtil;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.Scanner;
 
 import static homework.medicalCenter.Commands.*;
@@ -19,8 +18,6 @@ public class MedicalCenterDemo {
 
     public static void main(String[] args) {
         boolean isRunning = true;
-        Date date = new Date();
-
         while (isRunning) {
             Commands.printCommands();
             String command = SCANNER.nextLine();

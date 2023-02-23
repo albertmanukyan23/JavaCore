@@ -3,10 +3,10 @@ package homework.medicalCenter.models;
 import java.util.Objects;
 
 public class Person {
-    protected String name;
-    protected String surname;
-    protected String id;
-    protected String phoneNumber;
+    private String name;
+    private String surname;
+    private String id;
+    private String phoneNumber;
 
     public Person() {
     }
@@ -57,5 +57,15 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, id, phoneNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", id='" + id + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

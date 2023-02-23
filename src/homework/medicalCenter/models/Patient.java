@@ -50,11 +50,7 @@ public class Patient extends Person {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                " name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", id='" + id + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+        return super.toString() +
                 "registerDateTime=" + CalendarUtil.calendarToString(registerDateTime) +
                 ", doctor=" + doctor +
                 '}';
