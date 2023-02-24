@@ -3,9 +3,10 @@ package homework.medicalCenter.storage;
 import homework.medicalCenter.models.Doctor;
 import homework.medicalCenter.models.Patient;
 import homework.medicalCenter.models.Person;
-import homework.medicalCenter.util.CalendarUtil;
+import homework.medicalCenter.util.DateUtil;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class PersonStorage {
     private Person[] people = new Person[10];
@@ -44,18 +45,15 @@ public class PersonStorage {
 
     public Doctor[] searchByProfession(String profession) {
         Doctor[] doctors = new Doctor[size];
-        boolean isExists = false;
+        int docCount = 0;
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Doctor && ((Doctor) people[i]).getProfession().equals(profession)) {
-                isExists = true;
-                doctors[i] = (Doctor) people[i];
+                doctors[docCount++] = (Doctor) people[i];
             }
         }
-        // եթե բժիշկ չի հայտնաբերվել
-        if (!isExists) {
-            return null;
-        }
-        return doctors;
+        Doctor[] matchingDoctors = new Doctor[docCount];
+        System.arraycopy(doctors,0,matchingDoctors,0,docCount);
+        return matchingDoctors;
     }
 
     public void deletePersonByIndex(int index) {
@@ -73,13 +71,11 @@ public class PersonStorage {
         }
     }
 
-    public boolean doctorIsAvailable(Doctor doctor, Calendar date) {
+    public boolean doctorIsAvailable(Doctor doctor, Date date) {
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Patient) {
                 Patient patient = (Patient) people[i];
-                boolean hoursIsEquals = patient.getRegisterDateTime().get(Calendar.HOUR_OF_DAY) == date.get(Calendar.HOUR_OF_DAY);
-                boolean daysIsEquals = patient.getRegisterDateTime().get(Calendar.DAY_OF_MONTH) == date.get(Calendar.DAY_OF_MONTH);
-                if (patient.getDoctor().equals(doctor) && hoursIsEquals && daysIsEquals) {
+                if (patient.getDoctor().equals(doctor) && DateUtil.isSameDayAndYear(patient.getRegisterDateTime(),date)) {
                     return false;
                 }
             }
@@ -87,7 +83,7 @@ public class PersonStorage {
         return true;
     }
 
-    public boolean doctorIsExist() {
+    public boolean isDoctorExist() {
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Doctor) {
                 return true;
@@ -125,7 +121,9 @@ public class PersonStorage {
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Patient) {
                 Patient patient = (Patient) people[i];
-                if (patient.getRegisterDateTime().get(Calendar.DAY_OF_MONTH) == CalendarUtil.getDayOfWeekInMonth()) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(patient.getRegisterDateTime());
+                if (calendar.get(Calendar.DAY_OF_MONTH) == DateUtil.getDayOfWeekInMonth()) {
                     System.out.println(patient);
                 }
             }

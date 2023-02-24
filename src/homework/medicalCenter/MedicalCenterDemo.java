@@ -4,7 +4,7 @@ import homework.medicalCenter.models.Doctor;
 import homework.medicalCenter.models.Patient;
 import homework.medicalCenter.models.Person;
 import homework.medicalCenter.storage.PersonStorage;
-import homework.medicalCenter.util.CalendarUtil;
+import homework.medicalCenter.util.DateUtil;
 import homework.medicalCenter.util.DoctorUtil;
 
 import java.text.ParseException;
@@ -73,7 +73,7 @@ public class MedicalCenterDemo {
         System.out.println("Please input doctor's profession");
         String profession = SCANNER.nextLine();
         Doctor[] doctors = PERSON_STORAGE.searchByProfession(profession);
-        if (doctors == null) {
+        if (doctors.length == 0) {
             System.err.println("Doctor with such specialty wasn't found");
             return;
         }
@@ -101,7 +101,7 @@ public class MedicalCenterDemo {
     }
 
     private static void changeDoctorDataById() {
-        if (!PERSON_STORAGE.doctorIsExist()) {
+        if (!PERSON_STORAGE.isDoctorExist()) {
             System.err.println("Please add doctor first");
             return;
         }
@@ -123,7 +123,7 @@ public class MedicalCenterDemo {
     }
 
     private static void addPatient() {
-        if (!PERSON_STORAGE.doctorIsExist()) {
+        if (!PERSON_STORAGE.isDoctorExist()) {
             System.out.println("Please input doctor first");
             return;
         }
@@ -140,11 +140,11 @@ public class MedicalCenterDemo {
                     System.out.println("This id is already exists ,Please try again");
                     return;
                 }
-                if (!PERSON_STORAGE.doctorIsAvailable(doctor, CalendarUtil.stringToCalendar(patientData[4]))) {
+                if (!PERSON_STORAGE.doctorIsAvailable(doctor, DateUtil.stringToDate(patientData[4]))) {
                     System.out.println("The doctor is busy at that time");
                     return;
                 }
-                Patient patient = new Patient(patientData[0], patientData[1], patientData[2], patientData[3], CalendarUtil.stringToCalendar(patientData[4]), doctor);
+                Patient patient = new Patient(patientData[0], patientData[1], patientData[2], patientData[3], DateUtil.stringToDate(patientData[4]), doctor);
                 PERSON_STORAGE.add(patient);
                 System.out.println("Your registration was successful");
             } catch (ParseException e) {

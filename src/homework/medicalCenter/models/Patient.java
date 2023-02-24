@@ -1,28 +1,28 @@
 package homework.medicalCenter.models;
 
-import homework.medicalCenter.util.CalendarUtil;
+import homework.medicalCenter.util.DateUtil;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class Patient extends Person {
-    private Calendar registerDateTime;
+    private Date registerDateTime;
     private Doctor doctor;
 
     public Patient() {
     }
 
-    public Patient(String name, String surname, String id, String phoneNumber, Calendar registerDateTime, Doctor doctor) {
+    public Patient(String name, String surname, String id, String phoneNumber, Date registerDateTime, Doctor doctor) {
         super(name, surname, id, phoneNumber);
         this.registerDateTime = registerDateTime;
         this.doctor = doctor;
     }
 
-    public Calendar getRegisterDateTime() {
+    public Date getRegisterDateTime() {
         return registerDateTime;
     }
 
-    public void setRegisterDateTime(Calendar registerDateTime) {
+    public void setRegisterDateTime(Date registerDateTime) {
         this.registerDateTime = registerDateTime;
     }
 
@@ -51,7 +51,7 @@ public class Patient extends Person {
     @Override
     public String toString() {
         return super.toString() +
-                "registerDateTime=" + CalendarUtil.calendarToString(registerDateTime) +
+                "registerDateTime=" + DateUtil.dateToString(registerDateTime) +
                 ", doctor=" + doctor +
                 '}';
     }
