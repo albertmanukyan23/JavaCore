@@ -52,7 +52,7 @@ public class PersonStorage {
             }
         }
         Doctor[] matchingDoctors = new Doctor[docCount];
-        System.arraycopy(doctors,0,matchingDoctors,0,docCount);
+        System.arraycopy(doctors, 0, matchingDoctors, 0, docCount);
         return matchingDoctors;
     }
 
@@ -75,7 +75,7 @@ public class PersonStorage {
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Patient) {
                 Patient patient = (Patient) people[i];
-                if (patient.getDoctor().equals(doctor) && DateUtil.isSameDayAndYear(patient.getRegisterDateTime(),date)) {
+                if (patient.getDoctor().equals(doctor) && DateUtil.isFreeTime(patient.getRegisterDateTime(), date)) {
                     return false;
                 }
             }
@@ -121,9 +121,7 @@ public class PersonStorage {
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Patient) {
                 Patient patient = (Patient) people[i];
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(patient.getRegisterDateTime());
-                if (calendar.get(Calendar.DAY_OF_MONTH) == DateUtil.getDayOfWeekInMonth()) {
+                if (DateUtil.isSameDay(patient.getRegisterDateTime())) {
                     System.out.println(patient);
                 }
             }

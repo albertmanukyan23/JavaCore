@@ -6,8 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
-  private  static  final Calendar calendarOfFirstPatient = Calendar.getInstance();
-   private static final Calendar calendarOfSecondPatient = Calendar.getInstance();
+    private static final Calendar calendarOfFirstPatient = Calendar.getInstance();
+    private static final Calendar calendarOfSecondPatient = Calendar.getInstance();
     private static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
     public static Date stringToDate(String date) throws ParseException {
@@ -24,19 +24,26 @@ public class DateUtil {
         return SDF.format(date);
     }
 
-    public static int getDayOfWeekInMonth() {
-        Calendar today = Calendar.getInstance();
-        return today.get(Calendar.DAY_OF_MONTH);
-    }
-
-    public static boolean isSameDayAndYear(Date regPatientDate, Date newPatientDate) {
+    public static boolean isFreeTime(Date regPatientDate, Date newPatientDate) {
         calendarOfFirstPatient.setTime(regPatientDate);
         calendarOfSecondPatient.setTime(newPatientDate);
         Calendar calendarRange1 = (Calendar) calendarOfFirstPatient.clone();
         calendarRange1.add(Calendar.MINUTE, 30);
         Calendar calendarRange2 = (Calendar) calendarOfFirstPatient.clone();
         calendarRange1.add(Calendar.MINUTE, -30);
-              return  calendarOfFirstPatient.get(Calendar.DAY_OF_MONTH) == calendarOfSecondPatient.get(Calendar.DAY_OF_MONTH) &&
-                      (calendarOfSecondPatient.before(calendarRange1) || calendarOfSecondPatient.after(calendarRange2));
+        return calendarOfFirstPatient.get(Calendar.DAY_OF_MONTH) == calendarOfSecondPatient.get(Calendar.DAY_OF_MONTH) &&
+                calendarOfFirstPatient.get(Calendar.YEAR) == calendarOfSecondPatient.get(Calendar.YEAR) &&
+                (calendarOfSecondPatient.before(calendarRange1) || calendarOfSecondPatient.after(calendarRange2));
     }
+
+    public static boolean isSameDay(Date patientRegDateTime) {
+        Date todayDate = new Date();
+        Calendar today = Calendar.getInstance();
+        today.setTime(todayDate);
+        Calendar patientRegTime = Calendar.getInstance();
+        patientRegTime.setTime(patientRegDateTime);
+        return patientRegTime.get(Calendar.DAY_OF_MONTH) == today.get(Calendar.DAY_OF_MONTH) && patientRegTime.get(Calendar.YEAR) == today.get(Calendar.YEAR);
+
+    }
+
 }
