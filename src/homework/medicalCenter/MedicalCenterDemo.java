@@ -102,7 +102,7 @@ public class MedicalCenterDemo {
     }
 
     private static void deleteDoctorById() {
-        if (PERSON_STORAGE.isDoctorExist()) {
+        if (!PERSON_STORAGE.isDoctorExist()) {
             System.err.println("Please add doctor first");
             return;
         }
@@ -154,7 +154,7 @@ public class MedicalCenterDemo {
 
     private static void addPatient() {
         if (!PERSON_STORAGE.isDoctorExist()) {
-            System.err.println("Please input doctor first");
+            System.err.println("Please add doctor first");
             return;
         }
         PERSON_STORAGE.printDoctors();
