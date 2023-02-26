@@ -5,7 +5,6 @@ import homework.medicalCenter.models.Patient;
 import homework.medicalCenter.models.Person;
 import homework.medicalCenter.storage.PersonStorage;
 import homework.medicalCenter.util.DateUtil;
-import homework.medicalCenter.util.DoctorUtil;
 
 import java.text.ParseException;
 import java.util.Scanner;
@@ -52,39 +51,61 @@ public class MedicalCenterDemo {
         }
     }
 
+    private static void printDoctorPossibleProfessions() {
+        Profession[] professions = Profession.values();
+        for (Profession profession : professions) {
+            System.out.println(profession);
+        }
+    }
+
     private static void addDoctor() {
-        System.out.println("Please input name,surname,id,phone number, profession and email for adding doctor");
+        System.out.println("Please input name,surname,id,phone number and email");
         String[] data = SCANNER.nextLine().split(",");
+        System.out.println("Please choose doctor's profession");
+        printDoctorPossibleProfessions();
+        String professionStr = SCANNER.nextLine();
         try {
             if (PERSON_STORAGE.getPersonById(data[2]) != null) {
                 System.out.println("This id is already exists ,Please try again");
                 return;
             }
-
-            Doctor doctor = new Doctor(data[0], data[1], data[2], data[3], data[4], data[5]);
+            Profession profession = Profession.valueOf(professionStr);
+            Doctor doctor = new Doctor(data[0], data[1], data[2], data[3], profession, data[4]);
             PERSON_STORAGE.add(doctor);
             System.out.println("Your registration was successful!");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.err.println("Please fill all fields");
+        } catch (IllegalArgumentException e) {
+            System.out.println(" Invalid input: there is no doctor with that specialty in the clinic.");
         }
     }
 
     private static void searchDoctorByProfession() {
-        System.out.println("Please input doctor's profession");
-        String profession = SCANNER.nextLine();
-        Doctor[] doctors = PERSON_STORAGE.searchByProfession(profession);
-        if (doctors.length == 0) {
-            System.err.println("Doctor with such specialty wasn't found");
-            return;
-        }
-        for (Doctor doctor : doctors) {
-            if (doctor != null) {
-                System.out.println(doctor);
+        try {
+            printDoctorPossibleProfessions();
+            System.out.println("Please choose doctor's profession");
+            String professionStr = SCANNER.nextLine();
+            Profession prof = Profession.valueOf(professionStr);
+            Doctor[] doctors = PERSON_STORAGE.searchByProfession(prof);
+            if (doctors.length == 0) {
+                System.err.println("Doctor with such specialty wasn't found");
+                return;
             }
+            for (Doctor doctor : doctors) {
+                if (doctor != null) {
+                    System.out.println(doctor);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("The profession was wrongly chosen.");
         }
     }
 
     private static void deleteDoctorById() {
+        if (PERSON_STORAGE.isDoctorExist()) {
+            System.err.println("Please add doctor first");
+            return;
+        }
         PERSON_STORAGE.printDoctors();
         System.out.println("Please choose doctor's id");
         String idStr = SCANNER.nextLine();
@@ -98,6 +119,7 @@ public class MedicalCenterDemo {
         PERSON_STORAGE.deletePersonByIndex(index);
         PERSON_STORAGE.deletePatientsWithoutDoctor();
         System.out.println("Doctor was deleted ");
+
     }
 
     private static void changeDoctorDataById() {
@@ -112,11 +134,19 @@ public class MedicalCenterDemo {
         if (personById instanceof Doctor) {
             try {
                 Doctor doctor = (Doctor) personById;
-                System.out.println("Input by name what do you want to change(You can't change id) and new data ");
-                String[] data = SCANNER.nextLine().split(",");
-                DoctorUtil.doctorDataSetter(data[0], data[1], doctor);
+                System.out.println("Professions of our clinic");
+                printDoctorPossibleProfessions();
+                System.out.println("Input name,surname,phone,email,profession");
+                String[] docData = SCANNER.nextLine().split(",");
+                doctor.setName(docData[0]);
+                doctor.setSurname(docData[1]);
+                doctor.setPhoneNumber(docData[2]);
+                doctor.setEmail(docData[3]);
+                doctor.setProfession(Profession.valueOf(docData[4]));
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("Please fill all fields");
+            } catch (IllegalArgumentException e) {
+                System.out.println("The profession was wrongly chosen");
             }
         } else
             System.err.println("Wrong id,Please write id correctly");
@@ -124,7 +154,7 @@ public class MedicalCenterDemo {
 
     private static void addPatient() {
         if (!PERSON_STORAGE.isDoctorExist()) {
-            System.out.println("Please input doctor first");
+            System.err.println("Please input doctor first");
             return;
         }
         PERSON_STORAGE.printDoctors();
@@ -156,6 +186,11 @@ public class MedicalCenterDemo {
     }
 
     private static void printAllPatientsByDoctor() {
+        if (!PERSON_STORAGE.isDoctorExist()) {
+            System.err.println("Please input doctor first");
+            return;
+        }
+        PERSON_STORAGE.printDoctors();
         System.out.println("Please input doctor's name");
         String name = SCANNER.nextLine();
         PERSON_STORAGE.printByDoctorName(name);

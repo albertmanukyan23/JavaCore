@@ -4,8 +4,8 @@ import homework.medicalCenter.models.Doctor;
 import homework.medicalCenter.models.Patient;
 import homework.medicalCenter.models.Person;
 import homework.medicalCenter.util.DateUtil;
+import homework.medicalCenter.Profession;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class PersonStorage {
@@ -43,11 +43,11 @@ public class PersonStorage {
         return -1;
     }
 
-    public Doctor[] searchByProfession(String profession) {
+    public Doctor[] searchByProfession(Profession profession) {
         Doctor[] doctors = new Doctor[size];
         int docCount = 0;
         for (int i = 0; i < size; i++) {
-            if (people[i] instanceof Doctor && ((Doctor) people[i]).getProfession().equals(profession)) {
+            if (people[i] instanceof Doctor && ((Doctor) people[i]).getProfession() == profession) {
                 doctors[docCount++] = (Doctor) people[i];
             }
         }
@@ -93,10 +93,6 @@ public class PersonStorage {
     }
 
     public void printDoctors() {
-        if (size == 0) {
-            System.err.println("The storage is empty");
-            return;
-        }
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Doctor) {
                 System.out.println(people[i] + " ");
@@ -118,14 +114,18 @@ public class PersonStorage {
     }
 
     public void printTodayPatients() {
+        boolean patientIsExistToday = false;
         for (int i = 0; i < size; i++) {
             if (people[i] instanceof Patient) {
                 Patient patient = (Patient) people[i];
                 if (DateUtil.isSameDay(patient.getRegisterDateTime())) {
+                    patientIsExistToday = true;
                     System.out.println(patient);
                 }
             }
         }
+        if (!patientIsExistToday) {
+            System.err.println("There are no registered patients yet");
+        }
     }
-
 }

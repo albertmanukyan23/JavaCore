@@ -1,25 +1,27 @@
 package homework.medicalCenter.models;
 
+import homework.medicalCenter.Profession;
+
 import java.util.Objects;
 
 public class Doctor extends Person {
-    private String profession;
+    private Profession profession;
     private String email;
 
     public Doctor() {
     }
 
-    public Doctor(String name, String surname, String id, String phoneNumber, String profession, String email) {
+    public Doctor(String name, String surname, String id, String phoneNumber, Profession profession, String email) {
         super(name, surname, id, phoneNumber);
         this.profession = profession;
         this.email = email;
     }
 
-    public String getProfession() {
+    public Profession getProfession() {
         return profession;
     }
 
-    public void setProfession(String profession) {
+    public void setProfession(Profession profession) {
         this.profession = profession;
     }
 
