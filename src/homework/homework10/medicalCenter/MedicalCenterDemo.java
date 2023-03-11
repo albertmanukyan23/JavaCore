@@ -1,15 +1,15 @@
-package homework.medicalCenter;
+package homework.homework10.medicalCenter;
 
-import homework.medicalCenter.models.Doctor;
-import homework.medicalCenter.models.Patient;
-import homework.medicalCenter.models.Person;
-import homework.medicalCenter.storage.PersonStorage;
-import homework.medicalCenter.util.DateUtil;
+import homework.homework10.medicalCenter.models.Doctor;
+import homework.homework10.medicalCenter.models.Patient;
+import homework.homework10.medicalCenter.models.Person;
+import homework.homework10.medicalCenter.storage.PersonStorage;
+import homework.homework10.medicalCenter.util.DateUtil;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
-import static homework.medicalCenter.Commands.*;
+import static homework.homework10.medicalCenter.Commands.*;
 
 public class MedicalCenterDemo {
     private static final Scanner SCANNER = new Scanner(System.in);

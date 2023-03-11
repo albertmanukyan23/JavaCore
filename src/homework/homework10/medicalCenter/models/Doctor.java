@@ -1,6 +1,6 @@
-package homework.medicalCenter.models;
+package homework.homework10.medicalCenter.models;
 
-import homework.medicalCenter.Profession;
+import homework.homework10.medicalCenter.Profession;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
-package homework.medicalCenter.models;
+package homework.homework10.medicalCenter.models;
 
-import homework.medicalCenter.util.DateUtil;
+import homework.homework10.medicalCenter.util.DateUtil;
 
 import java.util.Date;
 import java.util.Objects;

@@ -1,10 +1,10 @@
-package homework.medicalCenter.storage;
+package homework.homework10.medicalCenter.storage;
 
-import homework.medicalCenter.models.Doctor;
-import homework.medicalCenter.models.Patient;
-import homework.medicalCenter.models.Person;
-import homework.medicalCenter.util.DateUtil;
-import homework.medicalCenter.Profession;
+import homework.homework10.medicalCenter.models.Doctor;
+import homework.homework10.medicalCenter.models.Patient;
+import homework.homework10.medicalCenter.models.Person;
+import homework.homework10.medicalCenter.util.DateUtil;
+import homework.homework10.medicalCenter.Profession;
 
 import java.util.Date;
 
