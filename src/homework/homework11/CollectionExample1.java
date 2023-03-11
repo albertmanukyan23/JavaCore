@@ -29,11 +29,7 @@ public class CollectionExample1 {
     private static void deleteByName(List<? extends String> names) {
         System.out.println("Please input name");
         String name = SCANNER.nextLine();
-        if (names.contains(name)) {
             names.remove(name);
-            return;
-        }
-        System.out.println("Name doesn't exist");
     }
 
     private static void addToList(List<String> names) {

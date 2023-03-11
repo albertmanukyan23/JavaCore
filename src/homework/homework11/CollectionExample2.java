@@ -9,7 +9,7 @@ public class CollectionExample2 {
 
     public static void main(String[] args) {
         System.out.println("Testing nameSort() method");
-        List<String> sortedNames = nameSort();
+        Set<String> sortedNames = nameSort();
         if (sortedNames == null) {
             System.err.println("Wrong Count of names");
         } else System.out.println(sortedNames);
@@ -21,16 +21,14 @@ public class CollectionExample2 {
         } else System.out.println(uniqueNames);
     }
 
-    //Անունները կարող են կրկնվել, դրա համար օգտագորժել եմ Arraylist, հակառակ դեպքում կօգտագործեի TreeSet
-    private static List<String> nameSort() {
+    private static Set<String> nameSort() {
         System.out.println("Please input 10 names");
         String str = SCANNER.nextLine();
         String[] strArray = str.split(",");
         if (strArray.length != 10) {
             return null;
         }
-        List<String> sortedNames = new ArrayList<>(Arrays.asList(strArray));
-        Collections.sort(sortedNames);
+        Set<String> sortedNames = new TreeSet<>(Arrays.asList(strArray));
         return sortedNames;
     }
 
