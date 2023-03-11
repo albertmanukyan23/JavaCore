@@ -1,5 +1,7 @@
 package chapter14;
 
+import java.util.Iterator;
+
 public class BoundsDemo {
     public static void main(String[] args) {
         Integer[] Inums = {20, 10, 15, 85};
