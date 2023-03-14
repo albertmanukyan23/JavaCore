@@ -6,11 +6,11 @@ import java.util.Queue;
 public class Stack<T> {
     //Implement the Stack methods using only two Queue objects
     private Queue<T> elementsByInputOrder;
-    private Queue<T> elementsToOutPut;
+    private Queue<T> tmpQueue;
 
     public Stack() {
         elementsByInputOrder = new LinkedList<T>();
-        elementsToOutPut = new LinkedList<T>();
+        tmpQueue = new LinkedList<T>();
     }
 
     public void push(T element) {
@@ -23,10 +23,10 @@ public class Stack<T> {
         }
         int size = elementsByInputOrder.size();
         for (int i = 0; i < size - 1; i++) {
-            elementsToOutPut.offer(elementsByInputOrder.poll());
+            tmpQueue.offer(elementsByInputOrder.poll());
         }
         T queue = elementsByInputOrder.poll();
-        elementsByInputOrder = elementsToOutPut;
+        elementsByInputOrder = tmpQueue;
         return queue;
     }
 

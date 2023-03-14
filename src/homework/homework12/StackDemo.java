@@ -9,10 +9,9 @@ public class StackDemo {
         st.push(1);
         System.out.println(st.pop());
         System.out.println(st.pop());
-        System.out.println(st.size());
-        System.out.println(st.isEmpty());
+        st.push(50);
         System.out.println(st.pop());
-        System.out.println(st.pop());
-        System.out.println(st.isEmpty());
+
+
     }
 }
